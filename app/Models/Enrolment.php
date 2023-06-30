@@ -16,17 +16,17 @@ class Enrolment extends Model
         'observacion'
     ];
 
-    public function managment(): BelongsTo{
-        return this->belongsTo(Managment::class);
+    public function managment(){
+        return $this->belongsTo(Managment::class);
     }
-    public function students(): HasMany{
-        return this->hasMany(Student::class);
+    public function students(){
+        return $this->hasMany(Student::class);
     }
-    public function course_managment(): HasMany{
-        return this->hasMany(CourseManagment::class);
+    public function course_managment(){
+        return $this->hasMany(CourseManagment::class);
     }
 
-    public function pays():HasMany {
-        return this->hasMany(Pay::class);
+    public function pays() {
+        return $this->hasMany(Pay::class);
     }
 }

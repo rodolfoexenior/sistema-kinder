@@ -13,7 +13,7 @@ class Course extends Model
         'descripcion'
     ];
     
-    public function coursemanagments(): HasMany
+    public function coursemanagments()
     {
         return $this->hasMany(CourseManagment::class);
     }

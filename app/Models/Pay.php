@@ -18,10 +18,10 @@ class Pay extends Model
         'observacion'
     ];
 
-    public function enrolment():BelongsTo {
-        return this->belongsTo(Enrolment::class);
+    public function enrolment() {
+        return $this->belongsTo(Enrolment::class);
     }
-    public function tutor():BelongsTo {
-        return this->belongsTo(Tutor::class);
+    public function tutor() {
+        return $this->belongsTo(Tutor::class);
     }
 }

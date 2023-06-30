@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TutorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,12 +21,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
 Route::get('/home', function() {
     return view('home');
 })->name('home')->middleware('auth');
+
+Route::resource('admin/tutors', TutorController::class)->names('admin.tutors');
+Route::resource('admin/countries', CountryController::class)->names('admin.countries');
+Route::resource('admin/cities', CityController::class)->names('admin.cities');
+

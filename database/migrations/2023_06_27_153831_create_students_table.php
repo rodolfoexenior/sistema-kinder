@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('paterno')->nullable();
             $table->string('materno')->nullable();
             $table->enum('sexo', ['Masculino', 'femenino']);
-            $table->unsignedBigInteger('cities_id');
+            $table->unsignedBigInteger('city_id');
             $table->bigInteger('num_cedula');
             $table->enum('extension',['SCZ','CBBA','LPZ','OR','PN','BN','SUC','POT','TJ'])->nullable();
             $table->date('nacimiento');
@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('provincia')->nullable();
             $table->date('fecha_registro');
 
-            $table->foreign('cities_id')->references('id')->on('cities');
+            $table->foreign('city_id')->references('id')->on('cities');
 
             $table->softDeletes();
             $table->timestamps();

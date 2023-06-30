@@ -312,11 +312,19 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
+            'text'        => 'Tutores',
+            'route'         => 'admin.tutors.index',
             'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Paises',
+            'route'         => 'admin.countries.index',
+            'icon'        => 'far fa-fw fa-file',
+        ],
+        [
+            'text'        => 'Ciudades',
+            'route'         => 'admin.cities.index',
+            'icon'        => 'far fa-fw fa-file',
         ],
         ['header' => 'account_settings'],
         [

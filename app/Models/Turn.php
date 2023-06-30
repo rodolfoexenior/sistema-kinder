@@ -15,7 +15,7 @@ class Turn extends Model
         'num_cuotas'
     ];
 
-    public function coursemangment(): HasMany
+    public function coursemangment()
     {
         return $this->hasMany(CourseManagment::class);
     }

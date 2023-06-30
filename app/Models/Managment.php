@@ -12,13 +12,13 @@ class Managment extends Model
         'gestion'
     ];
     
-    public function coursemangment(): HasMany
+    public function coursemangment()
     {
         return $this->hasMany(CourseManagment::class);
     }
     
-    public function enrolment(): HasMany{
-        return this->hasMany(Enrolment::class);
+    public function enrolment(){
+        return $this->hasMany(Enrolment::class);
     }
 
     

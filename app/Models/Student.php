@@ -31,19 +31,19 @@ class Student extends Model
     ];
 
    
-    public function city(): BelongsTo
+    public function city()
     {
         return $this->belongsTo(City::class);
     }
-    public function tutors(): BelongsToMany
+    public function tutors()
     {
         return $this->belongsToMany(Tutor::class)->withTimestamps();
     }
-    public function enrolment(): BelongsTo{
-        return this->belongsTo(Enrolment::class);
+    public function enrolment(){
+        return $this->belongsTo(Enrolment::class);
     }
 
-    public function image(): MorphToMany
+    public function image()
     {
         return $this->morphToMany(Image::class, 'imageable');
     }

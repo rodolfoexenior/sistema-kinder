@@ -21,18 +21,18 @@ class Teacher extends Model
         'user_id',
         'cities_id'
     ];
-    public function user(): BelongTo {
-        return this->belongsTo(User::class);
+    public function user(){
+        return $this->belongsTo(User::class);
     }
-    public function city(): BelongsTo
+    public function city()
     {
         return $this->belongsTo(City::class);
     }
-    public function coursemanagments(): HasMany
+    public function coursemanagments()
     {
         return $this->hasMany(CourseManagment::class);
     }
-    public function image(): MorphToMany
+    public function image()
     {
         return $this->morphToMany(Image::class, 'imageable');
     }
