@@ -26,6 +26,8 @@ class Teacher extends Model
         'user_id',
         'city_id'
     ];
+
+
     public function user(){
         return $this->belongsTo(User::class);
     }
@@ -41,6 +43,5 @@ class Teacher extends Model
     {
         return $this->morphToMany(Image::class, 'imageable');
     }
-
     
 }

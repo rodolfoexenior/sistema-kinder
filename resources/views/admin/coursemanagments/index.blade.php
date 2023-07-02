@@ -5,7 +5,7 @@
 @section('content_header')
     <h1 class="m-0 text-dark">Listado de cursos y sus designaciones</h1>
 @stop
-
+ 
 @section('content')
     <div class="row">
         <div class="col-12">
@@ -31,10 +31,10 @@
                         <tbody>
                             @foreach ($coursemanagments as $coursemanagment )  
                                 <tr>
-                                    <td>{{$coursemanagment->managment_id}}</td>
-                                    <td>{{$coursemanagment->course_id}}</td>
-                                    <td>{{$coursemanagment->teacher_id}}</td>
-                                    <td>{{$coursemanagment->turn_id}}</td>
+                                    <td>{{$coursemanagment->managment->gestion}}</td>
+                                    <td>{{$coursemanagment->course->nombre}}</td>
+                                    <td>{{$coursemanagment->teacher->nombres}}</td>
+                                    <td>{{$coursemanagment->turn->nombre}}</td>
                                     <td width="10px">
                                         <a class="btn btn-primary btn-sm" href="{{route('admin.coursemanagments.edit',$coursemanagment)}}">Editar</a>
                                     </td>

@@ -8,6 +8,7 @@ use App\Models\Managment;
 use App\Models\Teacher;
 use App\Models\Turn;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
       
 class CourseManagmentController extends Controller
 {
@@ -24,12 +25,13 @@ class CourseManagmentController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {/* 
+    {
+       
         $managments = Managment::pluck('gestion','id');
         $courses = Course::pluck('nombre','id');
-        $teachers = Teacher::pluck('gestion','id');
-        $turns = Turn::pluck('gestion','id');
-        return view('admin.coursemanagments.create', compact('managments','courses','teachers','turns')); */
+        $teachers = Teacher::select("id", DB::raw("CONCAT(teachers.nombres,' ',teachers.paterno,' ',teachers.materno,' ',teachers.num_cedula) as full_name"))->pluck('full_name', 'id');      
+        $turns = Turn::pluck('nombre','id');
+        return view('admin.coursemanagments.create', compact('managments','courses','teachers','turns')); 
     }
 
     /**
@@ -37,7 +39,8 @@ class CourseManagmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        CourseManagment::create($request->all());
+        return redirect()->route('admin.coursemanagments.index')->with('info','La distribución ha sido creada con éxito');
     }
 
     /**
@@ -51,17 +54,22 @@ class CourseManagmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(CourseManagment $coursemanagment)
     {
-        //
+        $managments = Managment::pluck('gestion','id');
+        $courses = Course::pluck('nombre','id');
+        $teachers = Teacher::select("id", DB::raw("CONCAT(teachers.nombres,' ',teachers.paterno,' ',teachers.materno,' ',teachers.num_cedula) as full_name"))->pluck('full_name', 'id');      
+        $turns = Turn::pluck('nombre','id');
+        return view('admin.coursemanagments.edit', compact('coursemanagment','managments','courses','teachers','turns'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,CourseManagment $coursemanagment)
     {
-        //
+        $coursemanagment->update($request->all());
+        return redirect()->route('admin.coursemanagments.index')->with('info','La distribución ha sido actualizada con éxito');
     }
 
     /**

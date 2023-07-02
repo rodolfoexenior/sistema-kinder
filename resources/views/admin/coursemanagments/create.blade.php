@@ -14,20 +14,34 @@
                     {!! Form::open(['route' => 'admin.coursemanagments.store']) !!}
                     <div class="form-group">
                         {!! Form::label('managment_id', 'Gestión') !!}
-                        {!! Form::select('country_id', $country, null, ['class' => 'form-control', 'placeholder' =>'Seleccione el pais']) !!}
-                        @error('country_id')
+                        {!! Form::select('managment_id', $managments, null, ['class' => 'form-control', 'placeholder' =>'Seleccione la gestión para asignar']) !!}
+                        @error('managment_id')
                         <span class="text-danger">{{$message}}</span>
                     @enderror
                     </div>
-                        <div class="form-group">
-                            {!! Form::label('name', 'Nombres') !!}
-                            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' =>'Nombre del país']) !!}
-                            @error('name')
-                                <span class="text-danger">{{$message}}</span>
-                            @enderror
-                        </div>
- 
-                            {!! Form::submit('Crear ciudad', ['class' =>'btn btn-primary btn-lg']) !!}
+                    <div class="form-group">
+                        {!! Form::label('course_id', 'Curso') !!}
+                        {!! Form::select('course_id', $courses, null, ['class' => 'form-control', 'placeholder' =>'Seleccione el curso para asignar']) !!}
+                        @error('course_id')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('teacher_id', 'Maestro') !!}
+                        {!! Form::select('teacher_id', $teachers, null, ['class' => 'form-control', 'placeholder' =>'Seleccione el maestro para asignar']) !!}
+                        @error('teacher_id')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('turn_id', 'Turno') !!}
+                        {!! Form::select('turn_id', $turns, null, ['class' => 'form-control', 'placeholder' =>'Seleccione el turno para asignar']) !!}
+                        @error('turn_id')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+                    </div>
+                    
+                            {!! Form::submit('Crear distribución', ['class' =>'btn btn-primary btn-lg']) !!}
                    
                         
                     {!! Form::close() !!}
