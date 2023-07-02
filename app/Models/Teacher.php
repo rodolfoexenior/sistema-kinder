@@ -18,8 +18,13 @@ class Teacher extends Model
         'nacimiento',
         'foto',
         'telefono',
+        'direccion',
+        'medio_difusion',
+        'matricula',
+        'especialidad',
+        'cargo',
         'user_id',
-        'cities_id'
+        'city_id'
     ];
     public function user(){
         return $this->belongsTo(User::class);

@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Ciudades')
+@section('title', 'Maestros')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Listado de ciudades</h1>
+    <h1 class="m-0 text-dark">Listado de maestros</h1>
 @stop
 
 @section('content')
@@ -16,26 +16,31 @@
         @endif
             <div class="card">
                 <div class="card-header">
-                    <a class="btn btn-success" href="{{route('admin.cities.create')}}">Crear nueva ciudad</a>
+                    <a class="btn btn-success" href="{{route('admin.teachers.create')}}">Crear nuevo maestro</a>
                 </div>
                 <div class="card-body">
-                    @foreach ($countries as $country )
-                    <h1><span class="badge bg-secondary">{{$country->name}}</span></h1>
-                   
                     <table class="table table-striped">
                         <thead>
                             <th>Nombre</th>
+                            <th>Paterno</th>
+                            <th>Matetrno</th>
+                            <th>Cargo</th>
+                            <th>Teléfono</th>
                             <th colspan="2"></th>
                         </thead>
                         <tbody>
-                            @foreach ($country->cities as $city)
+                            @foreach ($teachers as $teacher)
                                 <tr>
-                                    <td>{{$city->name}}</td>
+                                    <td>{{$teacher->nombres}}</td>
+                                    <td>{{$teacher->paterno}}</td>
+                                    <td>{{$teacher->materno}}</td>
+                                    <td>{{$teacher->cargo}}</td>
+                                    <td>{{$teacher->telefono}}</td>
                                     <td width="10px">
-                                        <a class="btn btn-primary btn-sm" href="{{route('admin.cities.edit',$city)}}">Editar</a>
+                                        <a class="btn btn-primary btn-sm" href="{{route('admin.teachers.edit',$teacher)}}">Editar</a>
                                     </td>
                                     <td width="10px">
-                                        <form action="{{route('admin.cities.destroy',$city)}}" method="post">
+                                        <form action="{{route('admin.teachers.destroy',$teacher)}}" method="post">
                                             @csrf @method('delete')
                                             <button type="submit" class="btn btn-danger btn-sm">Borrar</button>
                                         </form>
@@ -44,9 +49,6 @@
                             @endforeach
 
                         </tbody>
-                
-                        @endforeach
-                    </table>
                 </div>
             </div>
         </div>

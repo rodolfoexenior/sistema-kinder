@@ -11,8 +11,8 @@ class Turn extends Model
     protected  $fillable = [
         'nombre',
         'descripcion',
-        'precio_mes',
-        'num_cuotas'
+        'precio',
+        'mes'
     ];
 
     public function coursemangment()

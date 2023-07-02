@@ -326,6 +326,31 @@ return [
             'route'         => 'admin.cities.index',
             'icon'        => 'far fa-fw fa-file',
         ],
+        [
+            'text'        => 'Gestiones',
+            'route'        => 'admin.managments.index',
+            'icon'        => 'far fa-fw fa-file',
+        ],
+        [
+            'text'        => 'Cursos',
+            'route'        => 'admin.courses.index',
+            'icon'        => 'far fa-fw fa-file',
+        ],
+        [
+            'text'        => 'Turnos',
+            'route'        => 'admin.turns.index',
+            'icon'        => 'far fa-fw fa-file',
+        ],
+        [
+            'text'        => 'Distribución',
+            'route'        => 'admin.coursemanagments.index',
+            'icon'        => 'far fa-fw fa-file',
+        ],
+        [
+            'text'        => 'Maestros',
+            'route'        => 'admin.teachers.index',
+            'icon'        => 'far fa-fw fa-file',
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',

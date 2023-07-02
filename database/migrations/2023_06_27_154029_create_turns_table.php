@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('descripcion');
-            $table->double('precio_mes');
-            $table->smallInteger('num_cuotas');
+            $table->double('precio');
+            $table->smallInteger('mes');
             $table->timestamps();
         });
     }

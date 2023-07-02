@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Teacher;
 use App\Models\Country;
-use App\Models\Tutor;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class TutorController extends Controller
+class TeacherController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $tutors = Tutor::all();
-        return view('admin.tutors.index', compact('tutors'));
+        $teachers = Teacher::all();
+        return view('admin.teachers.index', compact('teachers'));
     }
 
     /**
@@ -25,7 +25,7 @@ class TutorController extends Controller
     {
         $countries = Country::all();
         $users = User::pluck('email','id');
-        return view('admin.tutors.create',compact('countries','users'));
+        return view('admin.teachers.create',compact('countries','users'));
     }
 
     /**
@@ -33,7 +33,8 @@ class TutorController extends Controller
      */
     public function store(Request $request)
     {
-        Tutor::create([
+        //return $request->all();
+        Teacher::create([
         'nombres' => $request->nombres,
         'paterno'=> $request->paterno,
         'materno'=> $request->materno,
@@ -45,42 +46,45 @@ class TutorController extends Controller
         'foto'=> $request->foto,
         'telefono'=> $request->telefono,
         'direccion'=> $request->direccion,
+        'matricula'=> $request->matricula,
+        'especialidad'=> $request->especialidad,
+        'cargo'=> $request->cargo,
         'medio_difusion'=> $request->medio_difusion,
         'user_id'=> $request->user_id,
         ]);
-        return redirect()->route('admin.tutors.index')->with('info','El tutor ha sido creado con éxito');
+        return redirect()->route('admin.teachers.index')->with('info','El maestro ha sido creado con éxito');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Tutor $tutor)
+    public function show(Teacher $teacher)
     {
-        return view('admin.tutors.show');
+        return view('admin.teachers.show');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Tutor $tutor)
+    public function edit(Teacher $teacher)
     {
         $users = User::pluck('email','id');
-        return view('admin.tutors.edit',compact('tutor', 'users'));
+        return view('admin.teachers.edit',compact( 'teacher','users'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tutor $tutor)
+    public function update(Request $request, Teacher $teacher)
     {
-        $tutor->update($request->all());
-        return redirect()->route('admin.tutors.edit',$tutor)->with('info','El tutor ha sido actualizada con éxito');
+        $teacher->update($request->all());
+        return redirect()->route('admin.teachers.index')->with('info','El maestro ha sido actualizado con éxito');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tutor $tutor)
+    public function destroy(Teacher $teacher)
     {
         //
     }

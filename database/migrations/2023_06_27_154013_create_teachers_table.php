@@ -23,6 +23,11 @@ return new class extends Migration
             $table->date('nacimiento');
             $table->string('foto')->nullable();
             $table->string('telefono')->nullable();
+            $table->string('direccion')->nullable();
+            $table->string('matricula')->nullable();
+            $table->string('especialidad')->nullable();
+            $table->enum('cargo',['Profesor','Tia','Ayudante','Otro'])->nullable();
+            $table->enum('medio_difusion',['Redes sociales','Colega','Magisterio','Otros']);
             $table->unsignedBigInteger('user_id');
             $table->foreign('city_id')->references('id')->on('cities');
             $table->foreign('user_id')->references('id')->on('users');

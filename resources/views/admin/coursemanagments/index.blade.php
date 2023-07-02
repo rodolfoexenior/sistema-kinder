@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Ciudades')
+@section('title', 'Distribución de cursos')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Listado de ciudades</h1>
+    <h1 class="m-0 text-dark">Listado de cursos y sus designaciones</h1>
 @stop
 
 @section('content')
@@ -16,26 +16,30 @@
         @endif
             <div class="card">
                 <div class="card-header">
-                    <a class="btn btn-success" href="{{route('admin.cities.create')}}">Crear nueva ciudad</a>
+                    <a class="btn btn-success" href="{{route('admin.coursemanagments.create')}}">Crear nuevo y sus designaciones</a>
                 </div>
                 <div class="card-body">
-                    @foreach ($countries as $country )
-                    <h1><span class="badge bg-secondary">{{$country->name}}</span></h1>
-                   
+                                     
                     <table class="table table-striped">
                         <thead>
-                            <th>Nombre</th>
+                            <th>Gestion</th>
+                            <th>Curso</th>
+                            <th>Profesor</th>
+                            <th>Turno</th>
                             <th colspan="2"></th>
                         </thead>
                         <tbody>
-                            @foreach ($country->cities as $city)
+                            @foreach ($coursemanagments as $coursemanagment )  
                                 <tr>
-                                    <td>{{$city->name}}</td>
+                                    <td>{{$coursemanagment->managment_id}}</td>
+                                    <td>{{$coursemanagment->course_id}}</td>
+                                    <td>{{$coursemanagment->teacher_id}}</td>
+                                    <td>{{$coursemanagment->turn_id}}</td>
                                     <td width="10px">
-                                        <a class="btn btn-primary btn-sm" href="{{route('admin.cities.edit',$city)}}">Editar</a>
+                                        <a class="btn btn-primary btn-sm" href="{{route('admin.coursemanagments.edit',$coursemanagment)}}">Editar</a>
                                     </td>
                                     <td width="10px">
-                                        <form action="{{route('admin.cities.destroy',$city)}}" method="post">
+                                        <form action="{{route('admin.coursemanagments.destroy',$coursemanagment)}}" method="post">
                                             @csrf @method('delete')
                                             <button type="submit" class="btn btn-danger btn-sm">Borrar</button>
                                         </form>
@@ -45,8 +49,7 @@
 
                         </tbody>
                 
-                        @endforeach
-                    </table>
+
                 </div>
             </div>
         </div>

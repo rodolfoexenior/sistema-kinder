@@ -32,12 +32,8 @@
                                         <strong>{{$country->name}}</strong>{{'. Ciudades: '}}
                                         @foreach ($country->cities as $city)
                                             {{$city->name}}{{', '}}
-                                        @endforeach
-                                        
+                                        @endforeach      
                                     </td>
-
-                                        
-
                                     <td width="10px">
                                         <a class="btn btn-primary btn-sm" href="{{route('admin.countries.edit',$country)}}">Editar</a>
                                     </td>
@@ -53,6 +49,8 @@
 
                         </tbody>
                         <a class="btn btn-info btn-sm" href="{{route('admin.cities.create')}}">Nueva ciudad</a>
+                    </table>
+                
                 </div>
             </div>
         </div>

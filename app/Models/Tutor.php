@@ -13,7 +13,6 @@ class Tutor extends Model
         'paterno',
         'materno',
         'sexo',
-        'cities_id',
         'num_cedula',
         'extension',
         'nacimiento',
@@ -21,7 +20,8 @@ class Tutor extends Model
         'telefono',
         'direccion',
         'medio_difusion',
-        'user_id'
+        'user_id',
+        'city_id'
     ];
     public function user(){
         return $this->belongsTo(User::class);

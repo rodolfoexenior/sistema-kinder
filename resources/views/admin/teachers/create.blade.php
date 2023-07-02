@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Tutores')
+@section('title', 'Maestro')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Crear tutor</h1>
+    <h1 class="m-0 text-dark">Crear maestro</h1>
 @stop
 
 @section('content')
@@ -11,7 +11,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    {!! Form::open(['route' => 'admin.tutors.store']) !!}
+                    {!! Form::open(['route' => 'admin.teachers.store']) !!}
                         <div class="form-group">
                             {!! Form::label('nombres', 'Nombres') !!}
                             {!! Form::text('nombres', null, ['class' => 'form-control', 'placeholder' =>'Ingrese su(s) nombre(s)']) !!}
@@ -98,6 +98,28 @@
                                 <span class="text-danger">{{$message}}</span>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            {!! Form::label('matricula', 'Matrícula profesional') !!}
+                            {!! Form::text('matricula', null, ['class' => 'form-control', 'placeholder' =>'Restro de matrícula profesional']) !!}
+                            @error('matricula')
+                                <span class="text-danger">{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('especialidad', 'Especialidad') !!}
+                            {!! Form::text('especialidad', null, ['class' => 'form-control', 'placeholder' =>'Ingrese la especialidad']) !!}
+                            @error('especialidad')
+                                <span class="text-danger">{{$message}}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('cargo', 'Cargo') !!}
+                            {!! Form::select('cargo', ['Profesor' => 'Profesor', 'Tia' => 'Tia','Ayudante' => 'Ayudante', 'Otro' => 'Otro'], null, ['class' => 'form-control', 'placeholder' =>'Seleccione el cargo']) !!}
+                            @error('cargo')
+                                <span class="text-danger">{{$message}}</span>
+                            @enderror
+                        </div>
                         
                         <div class="form-group">
                             {!! Form::label('nacimiento', 'Fecha de nacimiento') !!}
@@ -108,7 +130,7 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('medio_difusion', 'Medio por el que se enteró') !!}
-                            {!! Form::select('medio_difusion', ['Redes sociales' => 'Redes sociales', 'Amistad' => 'Amistad', 'Vecino' => 'Vecino', 'Otros' => 'Otros'], null, ['class' => 'form-control', 'placeholder' =>'Seleccione como nos conoció']) !!}
+                            {!! Form::select('medio_difusion', ['Redes sociales' => 'Redes sociales', 'Colega' => 'Colega', 'Magisterio' => 'Magisterio', 'Otros' => 'Otros'], null, ['class' => 'form-control', 'placeholder' =>'Seleccione como nos conoció']) !!}
                             @error('medio_difusion')
                                 <span class="text-danger">{{$message}}</span>
                             @enderror

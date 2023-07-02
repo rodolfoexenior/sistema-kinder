@@ -27,8 +27,8 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        $country = Country::create($request->all());
-        return redirect()->route('admin.countries.edit',$country)->with('info','El tutor ha sido creado con éxito');
+        Country::create($request->all());
+        return redirect()->route('admin.countries.index')->with('info','El país ha sido creado con éxito');
     }
 
     /**
@@ -53,7 +53,7 @@ class CountryController extends Controller
     public function update(Request $request, Country $country)
     {
         $country->update($request->all());
-        return redirect()->route('admin.countries.index')->with('info','El tutor ha sido actualizada con éxito');
+        return redirect()->route('admin.countries.index')->with('info','El país ha sido actualizado con éxito');
     }
 
     /**
