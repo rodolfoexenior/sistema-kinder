@@ -11,7 +11,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    {!! Form::open(['route' => 'admin.managments.store']) !!}
+                    {!! Form::open(['route' => 'admin.yearbooks.store']) !!}
                         <div class="form-group">
                             {!! Form::label('gestion', 'Gestión') !!}
                             {!! Form::text('gestion', null, ['class' => 'form-control', 'placeholder' =>'Registre la gesitón']) !!}

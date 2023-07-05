@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Gestión')
+@section('title', 'Provicncia')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Actualizar gestión</h1>
+    <h1 class="m-0 text-dark">Actualizar provincia</h1>
 @stop
 
 @section('content')
@@ -16,15 +16,15 @@
         @endif
         <div class="card">
             <div class="card-body">
-                {!! Form::model($managment, ['route' => ['admin.managments.update', $managment], 'method' => 'put']) !!}
+                {!! Form::model($province, ['route' => ['admin.provinces.update', $province], 'method' => 'put']) !!}
                     <div class="form-group">
-                        {!! Form::label('gestion', 'Gestión') !!}
-                        {!! Form::text('gestion', null, ['class' => 'form-control', 'placeholder' =>'Ingrese la gestión']) !!}
-                        @error('gestion')
+                        {!! Form::label('name', 'Nombres') !!}
+                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' =>'Ingrese nombre de la provincia']) !!}
+                        @error('name')
                             <span class="text-danger">{{$message}}</span>
                         @enderror
                     </div>
-                        {!! Form::submit('Actualizar turno o servicio', ['class' =>'btn btn-primary btn-lg']) !!}
+                        {!! Form::submit('Actualizar provincia', ['class' =>'btn btn-primary btn-lg']) !!}
                
                     
                 {!! Form::close() !!}

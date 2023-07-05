@@ -9,6 +9,9 @@ use App\Http\Controllers\TurnController;
 use App\Http\Controllers\TutorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseManagmentController;
+use App\Http\Controllers\ProvinceController;
+use App\Http\Controllers\ProvinciasController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 
 /*
@@ -29,7 +32,7 @@ Route::get('/', function () {
 
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-
+Route::get('/provincias', [ProvinciasController::class, 'provincias']);
 Auth::routes();
 
 Route::get('/home', function() {
@@ -42,6 +45,8 @@ Route::resource('admin/cities', CityController::class)->names('admin.cities');
 Route::resource('admin/courses', CourseController::class)->names('admin.courses');
 Route::resource('admin/turns', TurnController::class)->names('admin.turns');
 Route::resource('admin/teachers', TeacherController::class)->names('admin.teachers');
-Route::resource('admin/managments', ManagmentController::class)->names('admin.managments');
+Route::resource('admin/students', StudentController::class)->names('admin.students');
+Route::resource('admin/yearbooks', ManagmentController::class)->names('admin.yearbooks');
+Route::resource('admin/provinces', ProvinceController::class)->names('admin.provinces');
 Route::resource('admin/coursemanagments', CourseManagmentController::class)->names('admin.coursemanagments');
 

@@ -13,7 +13,7 @@ class ManagmentController extends Controller
     public function index()
     {
         $managments = Managment::all();
-        return view('admin.managments.index', compact('managments'));
+        return view('admin.yearbooks.index', compact('managments'));
     }
 
     /**
@@ -21,7 +21,7 @@ class ManagmentController extends Controller
      */
     public function create()
     {
-        return view('admin.managments.create');
+        return view('admin.yearbooks.create');
     }
 
     /**
@@ -29,8 +29,12 @@ class ManagmentController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'gestion' => "required|integer|min:2020|max:2100|unique:managments"
+        ]);
+       
         Managment::create($request->all());
-        return redirect()->route('admin.managments.index')->with('info','La gestión ha sido creado con éxito');
+        return redirect()->route('admin.yearbooks.index')->with('info','La gestión ha sido creado con éxito');
     }
 
     /**
@@ -44,9 +48,9 @@ class ManagmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Managment $managment)
+    public function edit(Managment $yearbook)
     {
-        return view('admin.managments.edit', compact('managment'));
+        return view('admin.yearbooks.edit', compact('yearbook'));
     }
 
     /**
@@ -54,8 +58,11 @@ class ManagmentController extends Controller
      */
     public function update(Request $request,Managment $managment)
     {
+        $request->validate([
+            'gestion' => "required|integer|min:2020|max:2100|unique:managments,gestion,$managment->id"
+        ]);
         $managment->update($request->all());
-        return redirect()->route('admin.managments.index')->with('info','La gestión ha sido editada con éxito');
+        return redirect()->route('admin.yearbooks.index')->with('info','La gestión ha sido editada con éxito');
     }
 
     /**

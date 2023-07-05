@@ -39,6 +39,12 @@ class CourseManagmentController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'managment_id' => "required",
+            'course_id'=> "required",
+            'teacher_id'=> "required",
+            'turn_id' => "required"
+        ]);
         CourseManagment::create($request->all());
         return redirect()->route('admin.coursemanagments.index')->with('info','La distribución ha sido creada con éxito');
     }
@@ -68,6 +74,12 @@ class CourseManagmentController extends Controller
      */
     public function update(Request $request,CourseManagment $coursemanagment)
     {
+        $request->validate([
+            'managment_id' => "required",
+            'course_id'=> "required",
+            'teacher_id'=> "required",
+            'turn_id' => "required"
+        ]);
         $coursemanagment->update($request->all());
         return redirect()->route('admin.coursemanagments.index')->with('info','La distribución ha sido actualizada con éxito');
     }

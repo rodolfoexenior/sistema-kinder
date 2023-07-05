@@ -33,6 +33,17 @@ class TutorController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nombres' => "required",
+            'paterno'=> "required",
+            'sexo'=> "required",
+            'city_id'=> "required",
+            'num_cedula'=> "required|unique:tutors",
+            'nacimiento'=>  'required|date|before:today',
+            'medio_difusion'=> "required",
+            'user_id'=> "required",
+            ]);
+
         Tutor::create([
         'nombres' => $request->nombres,
         'paterno'=> $request->paterno,
@@ -64,6 +75,7 @@ class TutorController extends Controller
      */
     public function edit(Tutor $tutor)
     {
+        
         $users = User::pluck('email','id');
         return view('admin.tutors.edit',compact('tutor', 'users'));
     }
@@ -73,6 +85,16 @@ class TutorController extends Controller
      */
     public function update(Request $request, Tutor $tutor)
     {
+        $request->validate([
+            'nombres' => "required",
+            'paterno'=> "required",
+            'sexo'=> "required",
+            'city_id'=> "required",
+            'num_cedula'=> "required|unique:tutors,num_cedula,$tutor->id",
+            'nacimiento'=>  'required|date|before:today',
+            'medio_difusion'=> "required",
+            'user_id'=> "required",
+            ]);
         $tutor->update($request->all());
         return redirect()->route('admin.tutors.edit',$tutor)->with('info','El tutor ha sido actualizada con éxito');
     }

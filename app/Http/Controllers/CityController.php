@@ -32,6 +32,10 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => "required|unique:cities",
+            'country_id' => "required"
+        ]);
        
         City::create([
             'name' => $request->name,
@@ -61,6 +65,9 @@ class CityController extends Controller
      */
     public function update(Request $request, City $city)
     {
+        $request->validate([
+            'name' => "required|unique:cities,name,$city->id",
+        ]);
         $city->update($request->all());
         return redirect()->route('admin.cities.index')->with('info','Ciudad actualizada con éxito');
     }

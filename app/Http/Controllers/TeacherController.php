@@ -33,7 +33,16 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //return $request->all();
+        $request->validate([
+            'nombres' => "required",
+            'paterno'=> "required",
+            'sexo'=> "required",
+            'city_id'=> "required",
+            'num_cedula'=> "required|unique:teachers",
+            'nacimiento'=>  'required|date|before:today',
+            'medio_difusion'=> "required",
+            'user_id'=> "required",
+            ]);
         Teacher::create([
         'nombres' => $request->nombres,
         'paterno'=> $request->paterno,
@@ -77,6 +86,16 @@ class TeacherController extends Controller
      */
     public function update(Request $request, Teacher $teacher)
     {
+        $request->validate([
+            'nombres' => "required",
+            'paterno'=> "required",
+            'sexo'=> "required",
+            'city_id'=> "required",
+            'num_cedula'=> "required|unique:teachers,num_cedula,$teacher->id",
+            'nacimiento'=>  'required|date|before:today',
+            'medio_difusion'=> "required",
+            'user_id'=> "required",
+            ]);
         $teacher->update($request->all());
         return redirect()->route('admin.teachers.index')->with('info','El maestro ha sido actualizado con éxito');
     }

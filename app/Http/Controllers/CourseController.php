@@ -29,6 +29,10 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nombre' => "required|unique:courses",
+            'descripcion' => "required"
+        ]);
         Course::create($request->all());
         return redirect()->route('admin.courses.index')->with('info','El nuevo curso se ha creado con éxito');
     }
@@ -54,6 +58,10 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
+        $request->validate([
+            'nombre' =>"required|unique:courses,nombre,$course->id",
+            'descripcion' => "required"
+        ]);
         $course->update($request->all());
         return redirect()->route('admin.courses.index')->with('info', 'El curso ha sido actualizado con éxito');
     }
