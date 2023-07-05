@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Paises')
+@section('title', 'Ciudad')
 
 @section('content_header')
     <h1 class="m-0 text-dark">Crear ciudad</h1>

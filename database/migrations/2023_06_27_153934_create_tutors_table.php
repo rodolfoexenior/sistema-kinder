@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
+
         Schema::create('tutors', function (Blueprint $table) {
             $table->id();
             $table->string('nombres');
-            $table->string('paterno')->nullable();
+            $table->string('paterno');
             $table->string('materno')->nullable();
             $table->enum('sexo', ['Masculino', 'femenino']);
             $table->unsignedBigInteger('city_id');

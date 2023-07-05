@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
             $table->string('nombres');
-            $table->string('paterno')->nullable();
+            $table->string('paterno');
             $table->string('materno')->nullable();
             $table->enum('sexo', ['Masculino', 'femenino']);
             $table->unsignedBigInteger('city_id');

@@ -29,6 +29,12 @@ class TurnController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nombre' => "required|unique:turns",
+            'descripcion'  => "required",
+            'precio'=> "required|decimal:0,2",
+            'mes'=> "required|integer|min:1|max:10"
+        ]);
         Turn::create($request->all());
         return redirect()->route('admin.turns.index')->with('info','Turno o servicio creado con éxito.');
     }
@@ -54,6 +60,12 @@ class TurnController extends Controller
      */
     public function update(Request $request, Turn $turn)
     {
+        $request->validate([
+            'nombre' => "required|unique:turns,nombre,$turn->id",
+            'descripcion'  => "required",
+            'precio'=> "required|decimal:0,2",
+            'mes'=> "required|integer|min:1|max:10"
+        ]);
         $turn->update($request->all());
         return redirect()->route('admin.turns.index')->with('info','Turno o servicio actualizado');
     }

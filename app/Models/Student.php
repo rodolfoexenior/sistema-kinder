@@ -13,27 +13,33 @@ class Student extends Model
         'paterno',
         'materno',
         'sexo',
-        'num_cedula',
-        'extension',
-        'nacimiento',
-        'cities_id',
         'prenatal',
         'habla',
         'camina',
+        'direccion',
+        'city_id', 
+        'num_cedula',
+        'extension',
+        'nacimiento',
         'num_certificado',
         'oficialia',
         'libro',
         'partida',
         'folio',
-        'provincia',
+        'province_id',
         'fecha_registro',
-        'cities_id'
+        'foto',
+        
     ];
 
    
     public function city()
     {
         return $this->belongsTo(City::class);
+    }
+    public function province()
+    {
+        return $this->belongsTo(Province::class);
     }
     public function tutors()
     {

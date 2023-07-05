@@ -45,8 +45,9 @@
 
                         </tbody>
                 
-                        @endforeach
+                       
                     </table>
+                    @endforeach
                 </div>
             </div>
         </div>

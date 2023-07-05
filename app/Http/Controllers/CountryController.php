@@ -27,6 +27,9 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|unique:countries'
+        ]);
         Country::create($request->all());
         return redirect()->route('admin.countries.index')->with('info','El país ha sido creado con éxito');
     }
@@ -52,6 +55,9 @@ class CountryController extends Controller
      */
     public function update(Request $request, Country $country)
     {
+        $request->validate([
+            'name' => "required|unique:countries,name,$country->id"
+        ]);
         $country->update($request->all());
         return redirect()->route('admin.countries.index')->with('info','El país ha sido actualizado con éxito');
     }

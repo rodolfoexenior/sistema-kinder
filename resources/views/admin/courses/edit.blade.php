@@ -31,7 +31,7 @@
                             <span class="text-danger">{{$message}}</span>
                         @enderror
                     </div>
-                        {!! Form::submit('Actualizar país', ['class' =>'btn btn-primary btn-lg']) !!}
+                        {!! Form::submit('Actualizar curso', ['class' =>'btn btn-primary btn-lg']) !!}
                
                     
                 {!! Form::close() !!}

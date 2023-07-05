@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('managments', function (Blueprint $table) {
             $table->id();
-            $table->integer('gestion');
+            $table->integer('gestion')->unique();
             $table->timestamps();
         });
     }

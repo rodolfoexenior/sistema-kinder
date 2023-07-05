@@ -69,7 +69,7 @@
                             @enderror
                         </div> --}}
                         <div class="form-group">
-                            {!! Form::label('cities_id', 'País de origen') !!}
+                            {!! Form::label('country_id', 'País de origen') !!}
                         </br>
                             <select class="form-control" name="country_id" id="country_id" onchange="showCities(this.value)">
                                 <option value="">Seleccione el país de origen</option>

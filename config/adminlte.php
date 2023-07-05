@@ -315,41 +315,62 @@ return [
             'text'        => 'Tutores',
             'route'         => 'admin.tutors.index',
             'icon'        => 'far fa-fw fa-file',
+            'active' => ['*tutors*'],
+            
         ],
         [
             'text'        => 'Paises',
             'route'         => 'admin.countries.index',
             'icon'        => 'far fa-fw fa-file',
+            'active' => ['*countries*'],
         ],
         [
             'text'        => 'Ciudades',
             'route'         => 'admin.cities.index',
             'icon'        => 'far fa-fw fa-file',
+            'active' => ['*cities*'],
+        ],
+        [
+            'text'        => 'Provincias',
+            'route'         => 'admin.provinces.index',
+            'icon'        => 'far fa-fw fa-file',
+            'active' => ['*provinces*'],
         ],
         [
             'text'        => 'Gestiones',
-            'route'        => 'admin.managments.index',
+            'route'        => 'admin.yearbooks.index',
             'icon'        => 'far fa-fw fa-file',
+            'active' => ['*yearbooks*'],
         ],
         [
             'text'        => 'Cursos',
             'route'        => 'admin.courses.index',
             'icon'        => 'far fa-fw fa-file',
+            'active' => ['*courses*'],
+        ],
+        [
+            'text'        => 'Alumnos',
+            'route'        => 'admin.students.index',
+            'icon'        => 'far fa-fw fa-file',
+            'active' => ['*students*'],
         ],
         [
             'text'        => 'Turnos',
             'route'        => 'admin.turns.index',
             'icon'        => 'far fa-fw fa-file',
+            'active' => ['*turns*'],
         ],
         [
             'text'        => 'Distribución',
             'route'        => 'admin.coursemanagments.index',
             'icon'        => 'far fa-fw fa-file',
+            'active' => ['*coursemanagments*'],
         ],
         [
             'text'        => 'Maestros',
             'route'        => 'admin.teachers.index',
             'icon'        => 'far fa-fw fa-file',
+            'active' => ['*teachers*'],
         ],
         ['header' => 'account_settings'],
         [

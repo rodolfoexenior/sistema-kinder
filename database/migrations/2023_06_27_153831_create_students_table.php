@@ -12,12 +12,11 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->string('nombres');
-            $table->string('paterno')->nullable();
+            $table->string('paterno');
             $table->string('materno')->nullable();
             $table->enum('sexo', ['Masculino', 'femenino']);
-            $table->unsignedBigInteger('city_id');
+            $table->unsignedBigInteger('city_id');//cedula
             $table->bigInteger('num_cedula');
-            $table->enum('extension',['SCZ','CBBA','LPZ','OR','PN','BN','SUC','POT','TJ'])->nullable();
             $table->date('nacimiento');
             $table->longText('prenatal');
             $table->date('habla');
@@ -27,10 +26,13 @@ return new class extends Migration
             $table->integer('libro')->nullable();
             $table->integer('partida')->nullable();
             $table->integer('folio')->nullable();
-            $table->string('provincia')->nullable();
-            $table->date('fecha_registro');
+            $table->unsignedBigInteger('province_id');
+            $table->string('direccion');
+            $table->string('foto')->nullable();
+            $table->date('fecha_registro')->nullable();
 
             $table->foreign('city_id')->references('id')->on('cities');
+            $table->foreign('province_id')->references('id')->on('provinces');
 
             $table->softDeletes();
             $table->timestamps();
