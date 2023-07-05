@@ -11,11 +11,11 @@ class Turn extends Model
     protected  $fillable = [
         'nombre',
         'descripcion',
-        'precio_mes',
-        'num_cuotas'
+        'precio',
+        'mes'
     ];
 
-    public function coursemangment(): HasMany
+    public function coursemangment()
     {
         return $this->hasMany(CourseManagment::class);
     }

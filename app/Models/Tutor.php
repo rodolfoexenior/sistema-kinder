@@ -20,24 +20,25 @@ class Tutor extends Model
         'telefono',
         'direccion',
         'medio_difusion',
-        'user_id'
+        'user_id',
+        'city_id'
     ];
     public function user(){
-        return this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
-    public function students(): BelongsToMany
+    public function students()
     {
         return $this->belongsToMany(Student::class)->withTimestamps();
     }
-    public function city(): BelongsTo
+    public function city()
     {
         return $this->belongsTo(City::class);
     }
-    public function image(): MorphToMany
+    public function image()
     {
         return $this->morphToMany(Image::class, 'imageable');
     }
-    public function pays():HasMany {
-        return this->hasMany(Pay::class);
+    public function pays(){
+        return $this->hasMany(Pay::class);
     }
 }

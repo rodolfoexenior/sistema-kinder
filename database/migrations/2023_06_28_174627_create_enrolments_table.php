@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('observacion');
 
             $table->foreign('managment_id')->references('id')->on('managments');
-            $table->foreign('course_managment_id')->references('id')->on('course_managment');
+            $table->foreign('course_managment_id')->references('id')->on('course_managments');
             $table->foreign('student_id')->references('id')->on('students');
 
             $table->timestamps();

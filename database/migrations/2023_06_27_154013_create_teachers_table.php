@@ -17,15 +17,20 @@ return new class extends Migration
             $table->string('paterno')->nullable();
             $table->string('materno')->nullable();
             $table->enum('sexo', ['Masculino', 'femenino']);
-            $table->unsignedBigInteger('cities_id');
+            $table->unsignedBigInteger('city_id');
             $table->bigInteger('num_cedula');
             $table->enum('extension',['SCZ','CBBA','LPZ','OR','PN','BN','SUC','POT','TJ'])->nullable();
             $table->date('nacimiento');
             $table->string('foto')->nullable();
             $table->string('telefono')->nullable();
-            $table->unsignedBigInteger('users_id');
-            $table->foreign('cities_id')->references('id')->on('cities');
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->string('direccion')->nullable();
+            $table->string('matricula')->nullable();
+            $table->string('especialidad')->nullable();
+            $table->enum('cargo',['Profesor','Tia','Ayudante','Otro'])->nullable();
+            $table->enum('medio_difusion',['Redes sociales','Colega','Magisterio','Otros']);
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('city_id')->references('id')->on('cities');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

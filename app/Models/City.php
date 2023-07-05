@@ -10,22 +10,22 @@ class City extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        'contries_id'
+        'country_id'
     ];
     
-    public function country(): BelongsTo
+    public function country()
     {
         return $this->belongsTo(Country::class);
     }
-    public function teachers(): HasMany
+    public function teachers()
     {
         return $this->hasMany(Teacher::class);
     }
-    public function tutors(): HasMany
+    public function tutors()
     {
         return $this->hasMany(Tutor::class);
     }
-    public function students(): HasMany
+    public function students()
     {
         return $this->hasMany(Student::class);
     }

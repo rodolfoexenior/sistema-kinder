@@ -14,20 +14,21 @@ class CourseManagment extends Model
         'teacher_id',
         'turn_id'
     ];
-    public function managment(): BelongsTo {
-        return this->belongsTo(Managment::class);
+    public function managment() 
+    {
+        return $this->belongsTo(Managment::class);
     }
-    public function course(): BelongsTo {
-        return this->belongsTo(Course::class);
+    public function course() {
+        return $this->belongsTo(Course::class);
     }
-    public function teacher(): BelongsTo {
-        return this->belongsTo(Teacher::class);
+    public function teacher(){
+        return $this->belongsTo(Teacher::class);
     }
-    public function turn(): BelongsTo {
-        return this->belongsTo(Turn::class);
+    public function turn() {
+        return $this->belongsTo(Turn::class);
     }
-    public function enrolment(): BelongsTo {
-        return this->belongsTo(Enrolment::class);
+    public function enrolment() {
+        return $this->belongsTo(Enrolment::class);
     }
 
 }
