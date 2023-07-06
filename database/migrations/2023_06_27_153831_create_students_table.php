@@ -15,8 +15,8 @@ return new class extends Migration
             $table->string('paterno');
             $table->string('materno')->nullable();
             $table->enum('sexo', ['Masculino', 'femenino']);
-            $table->unsignedBigInteger('city_id');//cedula
-            $table->bigInteger('num_cedula');
+            $table->unsignedBigInteger('city_id')->nullable();//cedula
+            $table->bigInteger('num_cedula')->nullable();
             $table->date('nacimiento');
             $table->longText('prenatal');
             $table->date('habla');
@@ -29,6 +29,9 @@ return new class extends Migration
             $table->unsignedBigInteger('province_id');
             $table->string('direccion');
             $table->string('foto')->nullable();
+            $table->string('foto_ci_frontal')->nullable();
+            $table->string('foto_ci_posterior')->nullable();
+            $table->string('foto_cert_nac')->nullable();
             $table->date('fecha_registro')->nullable();
 
             $table->foreign('city_id')->references('id')->on('cities');

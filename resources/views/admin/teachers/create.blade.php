@@ -69,17 +69,17 @@
                             @enderror
                         </div> --}}
                         <div class="form-group">
-                            {!! Form::label('country_id', 'País de origen') !!}
+                            {!! Form::label('country_id', 'País') !!}
                         </br>
                             <select class="form-control" name="country_id" id="country_id" onchange="showCities(this.value)">
-                                <option value="">Seleccione el país de origen</option>
+                                <option value="">Seleccione el país</option>
                                 @foreach ($countries as $country)
                                     <option value="{{$country->id}}">{{$country->name}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('cities_id', 'Ciudad de origen') !!}
+                            {!! Form::label('cities_id', 'Departamento donde fue otrogada su cédula') !!}
                         </br>
                             <select class="form-control" name="city_id" id="city_id">
                             </select>
@@ -88,13 +88,6 @@
                             {!! Form::label('num_cedula', 'Carnet de identidad') !!}
                             {!! Form::text('num_cedula', null, ['class' => 'form-control', 'placeholder' =>'Ingrese su numero de carnet sin extención']) !!}
                             @error('num_cedula')
-                                <span class="text-danger">{{$message}}</span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('extension', 'Emisión') !!}
-                            {!! Form::select('extension', ['SCZ' => 'Santa Cruz', 'CBBA' => 'Cochabamba','LPZ' => 'La Paz', 'OR' => 'Oruro','PN' => 'Pando', 'BN' => 'Beni','SUC' => 'Sucre', 'POT' => 'Potosí','TJ' => 'Tarija'], null, ['class' => 'form-control', 'placeholder' =>'Seleccione donde fue emitida su cédula']) !!}
-                            @error('extesion')
                                 <span class="text-danger">{{$message}}</span>
                             @enderror
                         </div>

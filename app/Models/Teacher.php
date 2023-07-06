@@ -14,7 +14,6 @@ class Teacher extends Model
         'materno',
         'sexo',
         'num_cedula',
-        'extension',
         'nacimiento',
         'foto',
         'telefono',

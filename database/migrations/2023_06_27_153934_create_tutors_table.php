@@ -18,16 +18,15 @@ return new class extends Migration
             $table->string('paterno');
             $table->string('materno')->nullable();
             $table->enum('sexo', ['Masculino', 'femenino']);
-            $table->unsignedBigInteger('city_id');
-            $table->bigInteger('num_cedula');
-            $table->enum('extension',['SCZ','CBBA','LPZ','OR','PN','BN','SUC','POT','TJ'])->nullable();
+            $table->unsignedBigInteger('city_id')->nullable();
+            $table->bigInteger('num_cedula')->nullable();
             $table->date('nacimiento');
             $table->string('foto')->nullable();
             $table->string('telefono')->nullable();
             $table->string('direccion')->nullable();
             $table->enum('medio_difusion',['Redes sociales','Amistad','Vecino','Otros']);
             $table->unsignedBigInteger('user_id');
-            $table->foreign('city_id')->references('id')->on('cities');
+            $table->foreign('city_id')->references('id')->on('cities')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             
             $table->timestamps();

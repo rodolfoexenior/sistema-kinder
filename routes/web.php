@@ -8,6 +8,7 @@ use App\Http\Controllers\ManagmentController;
 use App\Http\Controllers\TurnController;
 use App\Http\Controllers\TutorController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\CourseManagmentController;
 use App\Http\Controllers\ProvinceController;
 use App\Http\Controllers\ProvinciasController;
@@ -29,6 +30,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/migrate-fresh', function() {
+    Artisan::call('migrate:fresh');
+});
+Route::get('/cache-clear', function() {
+    Artisan::call('cache:clear');
+});
+Route::get('/config-clear', function() {
+    Artisan::call('config:clear');
+});
+Route::get('/optimize-clear', function() {
+    Artisan::call('optimize:clear');
+});
+Route::get('/route-clear', function() {
+    Artisan::call('route:clear');
+});
+Route::get('/view-clear', function() {
+    Artisan::call('view:clear');
+});
 
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

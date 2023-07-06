@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Country;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class StudentController extends Controller
 {
@@ -38,19 +39,34 @@ class StudentController extends Controller
             'prenatal' => "required",
             'habla' => "required|date|before:today",
             'camina' => "required|date|before:today",
-            'city_id'=> "required",
-            'num_certificado'=> "required",
-            'oficialia'=> "required",
-            'libro'=> "required",
-            'partida'=> "required",
-            'folio'=> "required",
-            'province_id'=> "required",
-            'fecha_registro' => 'required',
-            'num_cedula'=> "required|unique:students",
+            'num_cedula'=> "unique:students",
             'nacimiento'=>  'required|date|before:today',
-
+            'foto'=> 'image|max:2048',
+            'foto_ci_frontal'=> 'image|max:2048',
+            'foto_ci_posterior'=> 'image|max:2048',
+            'foto_cert_nac'=> 'image|max:2048'
  
         ]);
+        $urlfoto = "";
+        $urlcifrontal = "";
+        $urlciposterior = "";
+        $urlcnac = "";
+        if ($request->file('foto') != null){
+            $foto = $request->file('foto')->store('public/imagenes');
+            $urlfoto = Storage::url($foto);
+        }
+        if ($request->file('foto_ci_frontal') != null){
+            $fotocifrontal = $request->file('foto_ci_frontal')->store('public/imagenes');
+            $urlcifrontal = Storage::url($fotocifrontal);
+        }
+        if ($request->file('foto_ci_posterior') != null){
+            $fotociposterior = $request->file('foto_ci_posterior')->store('public/imagenes');
+            $urlciposterior = Storage::url($fotociposterior);
+        }
+        if ($request->file('foto_cert_nac') != null){
+            $fotocnac = $request->file('foto_cert_nac')->store('public/imagenes');
+            $urlcnac = Storage::url($fotocnac);
+        }
         Student::create([
             'nombres' => $request->nombres,
             'paterno'=> $request->paterno,
@@ -70,7 +86,10 @@ class StudentController extends Controller
             'folio'=> $request->folio,
             'province_id'=> $request->province_id,
             'fecha_registro'=> $request->fecha_registro,
-            'foto'=> $request->foto,
+            'foto'=> $urlfoto,
+            'foto_ci_frontal'=> $urlcifrontal,
+            'foto_ci_posterior'=> $urlciposterior,
+            'foto_cert_nac'=> $urlcnac,
         ]);
         
         return redirect()->route('admin.students.index')->with('info', 'Alumno creado con éxito.');
@@ -107,15 +126,7 @@ class StudentController extends Controller
             'prenatal' => "required",
             'habla' => "required|date|before:today",
             'camina' => "required|date|before:today",
-            'num_certificado'=> "required",
-            'oficialia'=> "required",
-            'libro'=> "required",
-            'partida'=> "required",
-            'folio'=> "required",
-            'city_id'=> "required",
-            'province_id'=> "required",
-            'fecha_registro' => 'required',
-            'num_cedula'=> "required|unique:students,num_cedula,$student->id",
+            'num_cedula'=> "unique:students,num_cedula,$student->id",
             'nacimiento'=>  'required|date|before:today',
  
             ]);

@@ -11,7 +11,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    {!! Form::open(['route' => 'admin.students.store']) !!}
+                    {!! Form::open(['route' => 'admin.students.store','enctype' => 'multipart/form-data']) !!}
                         <div class="form-group">
                             {!! Form::label('nombres', 'Nombres') !!}
                             {!! Form::text('nombres', null, ['class' => 'form-control', 'placeholder' =>'Ingrese su(s) nombre(s)']) !!}
@@ -180,9 +180,38 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            <img id="imageFoto">
                             {!! Form::label('foto', 'Fotografía del alumno') !!}
-                            {!! Form::text('foto', null, ['class' => 'form-control', 'placeholder' =>'Seleccione archivo de footgrafía']) !!}
+                            {{-- {!! Form::file('foto', null, ['onchange'=>"previewImage(event, '#imgPreview')", 'class' => 'form-control', 'placeholder' =>'Seleccione archivo de footgrafía']) !!} --}}
+                            <input type="file" name="foto" id="foto" value="Seleccionar foto" accept="image/*" onchange="previewFoto(event, '#imageFoto')" class="img-fluid">
                             @error('foto')
+                                <span class="text-danger">{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <img id="imageFront">
+                            {!! Form::label('foto_ci_frontal', 'Foto de carnet parte frontal del alumno') !!}
+                            {{-- {!! Form::file('foto_ci_frontal', null, ['class' => 'form-control', 'placeholder' =>'Seleccione archivo de footgrafía']) !!} --}}
+                            <input type="file" name="foto_ci_frontal" id="foto_ci_frontal" value="Seleccionar foto" accept="image/*" onchange="previewFront(event, '#imageFront')" class="img-fluid">
+                            @error('foto_ci_frontal')
+                                <span class="text-danger">{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <img id="imagePos">
+                            {!! Form::label('foto_ci_posterior', 'Foto de carnet parte posterior del alumno') !!}
+                            {{-- {!! Form::file('foto_ci_posterior', null, ['class' => 'form-control', 'placeholder' =>'Seleccione archivo de footgrafía']) !!} --}}
+                            <input type="file" name="foto_ci_posterior" id="foto_ci_posterior" value="Seleccionar foto" accept="image/*" onchange="previewPos(event, '#imagePos')" class="img-fluid">
+                            @error('foto_ci_posterior')
+                                <span class="text-danger">{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <img id="imageNac">
+                            {!! Form::label('foto_cert_nac', 'Foto del certificado de nacimiento') !!}
+                            {{--   {!! Form::file('foto_cert_nac', null, ['class' => 'form-control', 'placeholder' =>'Seleccione archivo de footgrafía']) !!} --}}
+                            <input type="file" name="foto_cert_nac" id="foto_cert_nac" value="Seleccionar foto" accept="image/*" onchange="previewNac(event, '#imageNac')" class="img-fluid">
+                            @error('foto_cert_nac')
                                 <span class="text-danger">{{$message}}</span>
                             @enderror
                         </div>
@@ -232,6 +261,38 @@
                     selectProvincias.appendChild(option);
                 });
            });
-        })
+        });
+        function previewFoto(event, querySelector){
+            const input = event.target;
+            $imageFoto = document.querySelector(querySelector);
+            if(!input.files.length) return
+            file = input.files[0];
+            objectURL = URL.createObjectURL(file);
+            $imageFoto.src = objectURL; 
+        }
+        function previewFront(event, querySelector){
+            const input = event.target;
+            $imageFront = document.querySelector(querySelector);
+            if(!input.files.length) return
+            file = input.files[0];
+            objectURL = URL.createObjectURL(file);
+            $imageFront.src = objectURL; 
+        }
+        function previewPos(event, querySelector){
+            const input = event.target;
+            $imagePos = document.querySelector(querySelector);
+            if(!input.files.length) return
+            file = input.files[0];
+            objectURL = URL.createObjectURL(file);
+            $imagePos.src = objectURL; 
+        }
+        function previewNac(event, querySelector){
+            const input = event.target;
+            $imageNac = document.querySelector(querySelector);
+            if(!input.files.length) return
+            file = input.files[0];
+            objectURL = URL.createObjectURL(file);
+            $imageNac.src = objectURL; 
+        }
     </script>
 @stop

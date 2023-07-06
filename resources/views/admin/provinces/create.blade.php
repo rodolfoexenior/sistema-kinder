@@ -28,13 +28,13 @@
                         <select class="form-control" name="city_id" id="city_id">
                         </select>
                     </div>
-                        <div class="form-group">
-                            {!! Form::label('name', 'Nombres') !!}
-                            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' =>'Ingresar el nombre de la provincia']) !!}
-                            @error('name')
-                                <span class="text-danger">{{$message}}</span>
-                            @enderror
-                        </div>
+                    <div class="form-group">
+                        {!! Form::label('name', 'Nombres') !!}
+                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' =>'Ingresar el nombre de la provincia']) !!}
+                        @error('name')
+                            <span class="text-danger">{{$message}}</span>
+                        @enderror
+                    </div>
  
                             {!! Form::submit('Crear provincia', ['class' =>'btn btn-primary btn-lg']) !!}
                    

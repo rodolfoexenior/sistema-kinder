@@ -29,6 +29,9 @@ class Student extends Model
         'province_id',
         'fecha_registro',
         'foto',
+        'foto_ci_frontal',
+        'foto_ci_posterior',
+        'foto_cert_nac',
         
     ];
 
